@@ -1,0 +1,1021 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/manhole/protos/SquareManhole.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/dji/mavic/protos/Mavic2Pro.proto"
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/apartment_structure/protos/Wall.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Roughcast.proto"
+#EXTERNPROTO "/home/anatoliy/Документы/my_webots_projects/mavic/worlds/protos/Arucos.proto"
+
+WorldInfo {
+  info [
+    "This demonstration shows a DJI Mavic 2 PRO flying over a rural area."
+    "After the drone has taken off, you can control it with the keyboard of your computer."
+  ]
+  title "DJI Mavic 2 PRO demo"
+  basicTimeStep 8
+  defaultDamping Damping {
+    linear 0.5
+    angular 0.5
+  }
+}
+Viewpoint {
+  orientation -0.03132509357312057 -0.004229724205027985 0.9995002991224087 2.901671340011777
+  position 3.392036511082617 -0.9278446049316036 0.7513423909480075
+  near 0.2
+  follow "Mavic 2 PRO"
+  followSmoothness 0.2
+}
+TexturedBackground {
+  luminosity 3
+}
+
+TexturedBackgroundLight {
+}
+
+Floor {
+  translation 0 -4.22 7
+  rotation 1 0 0 3.141592
+  size 20 16.4
+  tileSize 1 1
+  appearance PBRAppearance {
+    baseColorMap ImageTexture {
+      url [
+        "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/default/worlds/textures/asphalt.jpg"
+      ]
+    }
+    roughness 1
+    metalness 0
+  }
+}
+
+SquareManhole {
+  translation 0 0 -0.03
+}
+
+Wall {
+  translation 0 3.82 0
+  name "wall(1)"
+  size 20 0.2 7
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 2.857 1
+    }
+  }
+}
+
+#Arucos{
+
+#}
+
+Solid {
+  translation -9.87 -10 2
+  rotation 0.7071067811865476 0 0.7071067811865476 3.141592
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "markers/acuro_1.png"
+          ]
+          filtering 5
+        }
+        transparency 0.0
+        roughness 0.5
+        metalness 0
+        textureTransform TextureTransform {
+          rotation 1.5708
+        }
+      }
+      geometry Plane {
+        size 0.5 0.5
+      }
+    }
+  ]
+  name "aruco_1"
+}
+
+Solid {
+  translation -9.87 -6 2
+  rotation 0.7071067811865476 0 0.7071067811865476 3.141592
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "markers/acuro_2.png"
+          ]
+          filtering 5
+        }
+        transparency 0.0
+        roughness 0.5
+        metalness 0
+        textureTransform TextureTransform {
+          rotation 1.5708
+        }
+      }
+      geometry Plane {
+        size 0.5 0.5
+      }
+    }
+  ]
+  name "aruco_2"
+}
+
+Solid {
+  translation -9.87 -2 2
+  rotation 0.7071067811865476 0 0.7071067811865476 3.141592
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "markers/acuro_3.png"
+          ]
+          filtering 5
+        }
+        transparency 0.0
+        roughness 0.5
+        metalness 0
+        textureTransform TextureTransform {
+          rotation 1.5708
+        }
+      }
+      geometry Plane {
+        size 0.5 0.5
+      }
+    }
+  ]
+  name "aruco_3"
+}
+
+Solid {
+  translation -9.87 2 2
+  rotation 0.7071067811865476 0 0.7071067811865476 3.141592
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "markers/acuro_4.png"
+          ]
+          filtering 5
+        }
+        transparency 0.0
+        roughness 0.5
+        metalness 0
+        textureTransform TextureTransform {
+          rotation 1.5708
+        }
+      }
+      geometry Plane {
+        size 0.5 0.5
+      }
+    }
+  ]
+  name "aruco_4"
+}
+
+Solid {
+  translation -9.87 -10 5
+  rotation 0.7071067811865476 0 0.7071067811865476 3.141592
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "markers/acuro_5.png"
+          ]
+          filtering 5
+        }
+        transparency 0.0
+        roughness 0.5
+        metalness 0
+        textureTransform TextureTransform {
+          rotation 1.5708
+        }
+      }
+      geometry Plane {
+        size 0.5 0.5
+      }
+    }
+  ]
+  name "aruco_5"
+}
+
+Solid {
+  translation -9.87 -6 5
+  rotation 0.7071067811865476 0 0.7071067811865476 3.141592
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "markers/acuro_6.png"
+          ]
+          filtering 5
+        }
+        transparency 0.0
+        roughness 0.5
+        metalness 0
+        textureTransform TextureTransform {
+          rotation 1.5708
+        }
+      }
+      geometry Plane {
+        size 0.5 0.5
+      }
+    }
+  ]
+  name "aruco_6"
+}
+
+Solid {
+  translation -9.87 -2 5
+  rotation 0.7071067811865476 0 0.7071067811865476 3.141592
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "markers/acuro_7.png"
+          ]
+          filtering 5
+        }
+        transparency 0.0
+        roughness 0.5
+        metalness 0
+        textureTransform TextureTransform {
+          rotation 1.5708
+        }
+      }
+      geometry Plane {
+        size 0.5 0.5
+      }
+    }
+  ]
+  name "aruco_7"
+}
+
+Solid {
+  translation -9.87 2 5
+  rotation 0.7071067811865476 0 0.7071067811865476 3.141592
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "markers/acuro_8.png"
+          ]
+          filtering 5
+        }
+        transparency 0.0
+        roughness 0.5
+        metalness 0
+        textureTransform TextureTransform {
+          rotation 1.5708
+        }
+      }
+      geometry Plane {
+        size 0.5 0.5
+      }
+    }
+  ]
+  name "aruco_8"
+}
+
+Wall {
+  translation 0 -12.5 0
+  name "wall(2)"
+  size 20 0.2 7
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 5 1.75
+    }
+  }
+}
+
+Solid {
+  translation -8 3.69 2
+  rotation 1 0 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "markers/acuro_9.png"
+          ]
+          filtering 5
+        }
+        transparency 0.0
+        roughness 0.5
+        metalness 0
+        textureTransform TextureTransform {
+          rotation 1.5708
+        }
+      }
+      geometry Plane {
+        size 0.5 0.5
+      }
+    }
+  ]
+  name "aruco_9"
+}
+
+Solid {
+  translation -8 3.69 4
+  rotation 1 0 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "markers/acuro_10.png"
+          ]
+          filtering 5
+        }
+        transparency 0.0
+        roughness 0.5
+        metalness 0
+        textureTransform TextureTransform {
+          rotation 1.5708
+        }
+      }
+      geometry Plane {
+        size 0.5 0.5
+      }
+    }
+  ]
+  name "aruco_10"
+}
+
+Solid {
+  translation -4 3.69 2
+  rotation 1 0 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "markers/acuro_11.png"
+          ]
+          filtering 5
+        }
+        transparency 0.0
+        roughness 0.5
+        metalness 0
+        textureTransform TextureTransform {
+          rotation 1.5708
+        }
+      }
+      geometry Plane {
+        size 0.5 0.5
+      }
+    }
+  ]
+  name "aruco_11"
+}
+
+Solid {
+  translation -4 3.69 4
+  rotation 1 0 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "markers/acuro_12.png"
+          ]
+          filtering 5
+        }
+        transparency 0.0
+        roughness 0.5
+        metalness 0
+        textureTransform TextureTransform {
+          rotation 1.5708
+        }
+      }
+      geometry Plane {
+        size 0.5 0.5
+      }
+    }
+  ]
+  name "aruco_12"
+}
+
+Solid {
+  translation 0 3.69 2
+  rotation 1 0 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "markers/acuro_13.png"
+          ]
+          filtering 5
+        }
+        transparency 0.0
+        roughness 0.5
+        metalness 0
+        textureTransform TextureTransform {
+          rotation 1.5708
+        }
+      }
+      geometry Plane {
+        size 0.5 0.5
+      }
+    }
+  ]
+  name "aruco_13"
+}
+
+Solid {
+  translation 0 3.69 4
+  rotation 1 0 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "markers/acuro_14.png"
+          ]
+          filtering 5
+        }
+        transparency 0.0
+        roughness 0.5
+        metalness 0
+        textureTransform TextureTransform {
+          rotation 1.5708
+        }
+      }
+      geometry Plane {
+        size 0.5 0.5
+      }
+    }
+  ]
+  name "aruco_14"
+}
+
+Solid {
+  translation 4 3.69 2
+  rotation 1 0 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "markers/acuro_15.png"
+          ]
+          filtering 5
+        }
+        transparency 0.0
+        roughness 0.5
+        metalness 0
+        textureTransform TextureTransform {
+          rotation 1.5708
+        }
+      }
+      geometry Plane {
+        size 0.5 0.5
+      }
+    }
+  ]
+  name "aruco_15"
+}
+
+Solid {
+  translation 4 3.69 4
+  rotation 1 0 0 1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "markers/acuro_16.png"
+          ]
+          filtering 5
+        }
+        transparency 0.0
+        roughness 0.5
+        metalness 0
+        textureTransform TextureTransform {
+          rotation 1.5708
+        }
+      }
+      geometry Plane {
+        size 0.5 0.5
+      }
+    }
+  ]
+  name "aruco_16"
+}
+
+Solid {
+  translation -8 -12.3 2
+  rotation 1 0 0 -1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "markers/acuro_17.png"
+          ]
+          filtering 5
+        }
+        transparency 0.0
+        roughness 0.5
+        metalness 0
+        textureTransform TextureTransform {
+          rotation 1.5708
+        }
+      }
+      geometry Plane {
+        size 0.5 0.5
+      }
+    }
+  ]
+  name "aruco_17"
+}
+
+Solid {
+  translation -8 -12.3 4
+  rotation 1 0 0 -1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "markers/acuro_18.png"
+          ]
+          filtering 5
+        }
+        transparency 0.0
+        roughness 0.5
+        metalness 0
+        textureTransform TextureTransform {
+          rotation 1.5708
+        }
+      }
+      geometry Plane {
+        size 0.5 0.5
+      }
+    }
+  ]
+  name "aruco_18"
+}
+
+Solid {
+  translation -4 -12.3 2
+  rotation 1 0 0 -1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "markers/acuro_19.png"
+          ]
+          filtering 5
+        }
+        transparency 0.0
+        roughness 0.5
+        metalness 0
+        textureTransform TextureTransform {
+          rotation 1.5708
+        }
+      }
+      geometry Plane {
+        size 0.5 0.5
+      }
+    }
+  ]
+  name "aruco_19"
+}
+
+Solid {
+  translation -4 -12.3 4
+  rotation 1 0 0 -1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "markers/acuro_20.png"
+          ]
+          filtering 5
+        }
+        transparency 0.0
+        roughness 0.5
+        metalness 0
+        textureTransform TextureTransform {
+          rotation 1.5708
+        }
+      }
+      geometry Plane {
+        size 0.5 0.5
+      }
+    }
+  ]
+  name "aruco_20"
+}
+
+Solid {
+  translation 0 -12.3 2
+  rotation 1 0 0 -1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "markers/acuro_21.png"
+          ]
+          filtering 5
+        }
+        transparency 0.0
+        roughness 0.5
+        metalness 0
+        textureTransform TextureTransform {
+          rotation 1.5708
+        }
+      }
+      geometry Plane {
+        size 0.5 0.5
+      }
+    }
+  ]
+  name "aruco_21"
+}
+
+Solid {
+  translation 0 -12.3 4
+  rotation 1 0 0 -1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "markers/acuro_22.png"
+          ]
+          filtering 5
+        }
+        transparency 0.0
+        roughness 0.5
+        metalness 0
+        textureTransform TextureTransform {
+          rotation 1.5708
+        }
+      }
+      geometry Plane {
+        size 0.5 0.5
+      }
+    }
+  ]
+  name "aruco_22"
+}
+
+Solid {
+  translation 4 -12.3 2
+  rotation 1 0 0 -1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "markers/acuro_23.png"
+          ]
+          filtering 5
+        }
+        transparency 0.0
+        roughness 0.5
+        metalness 0
+        textureTransform TextureTransform {
+          rotation 1.5708
+        }
+      }
+      geometry Plane {
+        size 0.5 0.5
+      }
+    }
+  ]
+  name "aruco_23"
+}
+
+Solid {
+  translation 4 -12.3 4
+  rotation 1 0 0 -1.5708
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "markers/acuro_24.png"
+          ]
+          filtering 5
+        }
+        transparency 0.0
+        roughness 0.5
+        metalness 0
+        textureTransform TextureTransform {
+          rotation 1.5708
+        }
+      }
+      geometry Plane {
+        size 0.5 0.5
+      }
+    }
+  ]
+  name "aruco_24"
+}
+
+Solid {
+  translation 9.89 -10 2
+  rotation 0.7071067811865476 0 -0.7071067811865476 -3.141592
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "markers/acuro_25.png"
+          ]
+          filtering 5
+        }
+        transparency 0.0
+        roughness 0.5
+        metalness 0
+        textureTransform TextureTransform {
+          rotation 1.5708
+        }
+      }
+      geometry Plane {
+        size 0.5 0.5
+      }
+    }
+  ]
+  name "aruco_25"
+}
+
+Solid {
+  translation 9.89 -10 4
+  rotation 0.7071067811865476 0 -0.7071067811865476 -3.141592
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "markers/acuro_26.png"
+          ]
+          filtering 5
+        }
+        transparency 0.0
+        roughness 0.5
+        metalness 0
+        textureTransform TextureTransform {
+          rotation 1.5708
+        }
+      }
+      geometry Plane {
+        size 0.5 0.5
+      }
+    }
+  ]
+  name "aruco_26"
+}
+
+Solid {
+  translation 9.89 -6 2
+  rotation 0.7071067811865476 0 -0.7071067811865476 -3.141592
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "markers/acuro_27.png"
+          ]
+          filtering 5
+        }
+        transparency 0.0
+        roughness 0.5
+        metalness 0
+        textureTransform TextureTransform {
+          rotation 1.5708
+        }
+      }
+      geometry Plane {
+        size 0.5 0.5
+      }
+    }
+  ]
+  name "aruco_27"
+}
+
+Solid {
+  translation 9.89 -6 4
+  rotation 0.7071067811865476 0 -0.7071067811865476 -3.141592
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "markers/acuro_28.png"
+          ]
+          filtering 5
+        }
+        transparency 0.0
+        roughness 0.5
+        metalness 0
+        textureTransform TextureTransform {
+          rotation 1.5708
+        }
+      }
+      geometry Plane {
+        size 0.5 0.5
+      }
+    }
+  ]
+  name "aruco_28"
+}
+
+Solid {
+  translation 9.89 -2 2
+  rotation 0.7071067811865476 0 -0.7071067811865476 -3.141592
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "markers/acuro_29.png"
+          ]
+          filtering 5
+        }
+        transparency 0.0
+        roughness 0.5
+        metalness 0
+        textureTransform TextureTransform {
+          rotation 1.5708
+        }
+      }
+      geometry Plane {
+        size 0.5 0.5
+      }
+    }
+  ]
+  name "aruco_29"
+}
+
+Solid {
+  translation 9.89 -2 4
+  rotation 0.7071067811865476 0 -0.7071067811865476 -3.141592
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "markers/acuro_30.png"
+          ]
+          filtering 5
+        }
+        transparency 0.0
+        roughness 0.5
+        metalness 0
+        textureTransform TextureTransform {
+          rotation 1.5708
+        }
+      }
+      geometry Plane {
+        size 0.5 0.5
+      }
+    }
+  ]
+  name "aruco_30"
+}
+
+Solid {
+  translation 9.89 2 2
+  rotation 0.7071067811865476 0 -0.7071067811865476 -3.141592
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "markers/acuro_31.png"
+          ]
+          filtering 5
+        }
+        transparency 0.0
+        roughness 0.5
+        metalness 0
+        textureTransform TextureTransform {
+          rotation 1.5708
+        }
+      }
+      geometry Plane {
+        size 0.5 0.5
+      }
+    }
+  ]
+  name "aruco_31"
+}
+
+Solid {
+  translation 9.89 2 4
+  rotation 0.7071067811865476 0 -0.7071067811865476 -3.141592
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "markers/acuro_32.png"
+          ]
+          filtering 5
+        }
+        transparency 0.0
+        roughness 0.5
+        metalness 0
+        textureTransform TextureTransform {
+          rotation 1.5708
+        }
+      }
+      geometry Plane {
+        size 0.5 0.5
+      }
+    }
+  ]
+  name "aruco_32"
+}
+
+Wall {
+  translation -10 -4.3 0
+  rotation 0 0 1 1.5708
+  name "wall(3)"
+  size 16.5 0.2 7
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 4.125 1.725
+    }
+  }
+}
+
+Wall {
+  translation 10 -4.3 0
+  rotation 0 0 1 -1.5708
+  size 16.5 0.2 7
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 4.125 1.725
+    }
+  }
+
+  Sonar {
+    name "sonar_4"
+  }
+}
+
+
+Mavic2Pro {
+  translation 0 0 0.1
+  rotation 0 0 1 3.141590777218456
+  controller "mavic_aruco_python"
+
+  cameraSlot [
+    Camera {
+      width 400
+      height 240
+      near 0.2
+    }
+  ]
+}

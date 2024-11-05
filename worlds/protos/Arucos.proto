@@ -1,0 +1,45 @@
+#VRML_SIM R2023b utf8
+# tags: nonDeterministic
+# template language: javascript
+
+PROTO Arucos [
+
+]
+
+{
+%< for(let x = 0; x < 4; x++) { >%
+  %< for(let z = 0; z < 2; z++) { >%
+
+Solid {
+
+  translation -9.87 %< -10 + 2*x; >% %< 2 + 2*z; >%
+  rotation 0.7071067811865476 0 0.7071067811865476 3.141592
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.8 0.8
+        baseColorMap ImageTexture {
+          url [
+            "markers/acuro_%<x * z + x + 1>%.png"
+          ]
+          filtering 5
+        }
+        transparency 0.0
+        roughness 0.5
+        metalness 0
+        textureTransform TextureTransform {
+          rotation 1.5708
+        }
+      }
+      geometry Plane {
+        size 0.5 0.5
+      }
+    }
+  ]
+  name "aruco_%<x * z + x + 1>%"
+}
+
+%< } >%
+%< } >%
+
+}
