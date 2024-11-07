@@ -157,7 +157,7 @@ def main():
                 #print(f'Marker ID: {ids[i][0]}')
                 #print(f'Translation Vector (tvec): {tvec[0]}')
                 #print(f'Rotation Vector (rvec): {rvec[0]}')
-                print('rvec: ' + str(rvec) + ', tvec: ' + str(tvec) + ', marker_pts: ' + str(marker_pts))
+                #print('rvec: ' + str(rvec) + ', tvec: ' + str(tvec) + ', marker_pts: ' + str(marker_pts))
         
         ###################################
 

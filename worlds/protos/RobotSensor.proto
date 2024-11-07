@@ -1,0 +1,18 @@
+#VRML_SIM R2023b utf8
+
+PROTO RobotSensor [
+    field SFVec3f    translation         0 0 0.065
+    field SFRotation rotation            0 0 1 0
+    field SFString   controller          "mavic_sonars"
+    field SFBool     supervisor          TRUE
+    field MFNode     sensorSlot          [ Camera { width 400 height 240 } ]
+]
+{
+    Robot {
+        translation IS translation
+        rotation IS rotation
+        controller IS controller
+        children IS sensorSlot
+        supervisor IS supervisor
+    }
+}

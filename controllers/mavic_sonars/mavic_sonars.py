@@ -1,2 +1,2 @@
-while True:
-    print('sonar is working')
+
+print('sonar is working')
