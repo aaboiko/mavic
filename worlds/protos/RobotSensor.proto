@@ -5,7 +5,7 @@ PROTO RobotSensor [
     field SFRotation rotation            0 0 1 0
     field SFString   controller          "mavic_sonars"
     field SFBool     supervisor          TRUE
-    field MFNode     sensorSlot          [ Camera { width 400 height 240 } ]
+    field MFNode     sensorSlot          [  ]
 ]
 {
     Robot {

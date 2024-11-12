@@ -24,23 +24,6 @@ def CLAMP(value, low, high):
             return value
         
 
-def imageToMat(image):
-    res = np.zeros((400, 240, 3))
-    it = iter(image)
-    i = 0
-    j = 0
-
-    for item in zip(it, it, it, it):
-        res[i,j] = item[0:3]
-        i += 1
-
-        if i == 400:
-            j += 1
-            i = 0
-    
-    return res
-        
-
 def main():
     robot = Robot()
     print('robot initiated')
@@ -60,10 +43,8 @@ def main():
     gyro = robot.getDevice("gyro")
     gyro.enable(timestep)
 
-    print('keyboard init...')
     keyboard = Keyboard()
     keyboard.enable(timestep)
-    print('keyboard enabled')
 
     camera_roll_motor = robot.getDevice("camera roll")
     camera_pitch_motor = robot.getDevice("camera pitch")
