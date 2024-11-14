@@ -3,7 +3,7 @@ import cv2
 import math
 import matplotlib.pyplot as plt
 
-from controller import Robot
+from controller import Robot, Supervisor
 from controller import Camera
 from controller import Compass
 from controller import GPS
@@ -12,6 +12,8 @@ from controller import InertialUnit
 from controller import Keyboard
 from controller import LED
 from controller import Motor
+
+NUM_ARUCOS = 32
 
 
 def CLAMP(value, low, high):
@@ -25,7 +27,7 @@ def CLAMP(value, low, high):
         
 
 def main():
-    robot = Robot()
+    robot = Supervisor()
     print('robot initiated')
     timestep = int(robot.getBasicTimeStep())
     print('timestep: ' + str(timestep))
@@ -65,7 +67,7 @@ def main():
         if robot.getTime() > 1.0:
             break
 
-    print("You can control the drone with your computer keyboard:\n")
+    '''print("You can control the drone with your computer keyboard:\n")
     print("- 'up': move forward.\n")
     print("- 'down': move backward.\n")
     print("- 'right': turn right.\n")
@@ -73,7 +75,7 @@ def main():
     print("- 'shift + up': increase the target altitude.\n")
     print("- 'shift + down': decrease the target altitude.\n")
     print("- 'shift + right': strafe right.\n")
-    print("- 'shift + left': strafe left.\n")
+    print("- 'shift + left': strafe left.\n")'''
 
     k_vertical_thrust = 68.5
     k_vertical_offset = 0.6
@@ -82,6 +84,35 @@ def main():
     k_pitch_p = 30.0
 
     target_altitude = 1.0
+
+    #getting ARUCO positions
+    arucos = []
+
+    root_node = robot.getRoot()
+    children = root_node.getField('children')
+
+    for i in range(NUM_ARUCOS + 8):
+        aruco = children.getMFNode(i)
+        name_field = aruco.getField('name')
+
+        if name_field is None:
+            name = 'None'
+        else:
+            name = name_field.getSFString()
+
+            if name.split('_')[0] == 'aruco':
+                translation = aruco.getField('translation').getSFVec3f()
+                rotation = aruco.getField('rotation').getSFRotation()
+                
+                pose = {
+                    "translation": translation,
+                    "rotation": rotation
+                }
+
+                arucos.append(pose)
+
+    print('arucos: ' + str(len(arucos)))
+
 
     while robot.step(timestep) != -1:
         time = robot.getTime()

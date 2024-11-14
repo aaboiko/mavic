@@ -54,38 +54,48 @@ def get_intersections(pose_0, pose_1, r0, r1):
 
 print('sonar is working')
 
-robot = Supervisor()
-time_step = int(robot.getBasicTimeStep())
+def main():
+    robot = Supervisor()
+    time_step = int(robot.getBasicTimeStep())
 
-#Getting sonars
-sonar_1 = robot.getDevice("sonar_1")
-sonar_2 = robot.getDevice("sonar_2")
-sonar_3 = robot.getDevice("sonar_3")
-sonar_4 = robot.getDevice("sonar_4")
-sonars = [sonar_1, sonar_2, sonar_3, sonar_4]
+    #Getting sonars
+    sonar_1 = robot.getDevice("sonar_1")
+    sonar_2 = robot.getDevice("sonar_2")
+    sonar_3 = robot.getDevice("sonar_3")
+    sonar_4 = robot.getDevice("sonar_4")
+    sonars = [sonar_1, sonar_2, sonar_3, sonar_4]
 
-#Enabling sonars
-for sonar in sonars:
-    sonar.enable(time_step)
+    #Enabling sonars
+    for sonar in sonars:
+        sonar.enable(time_step)
 
 
-robot_node = robot.getSelf()
-sensor_slot = robot_node.getField("sensorSlot")
+    robot_node = robot.getSelf()
+    sensor_slot = robot_node.getField("sensorSlot")
 
-sonar_nodes = [sensor_slot.getMFNode(i) for i in range(len(sonars))]
-sonar_poses = [sonar_node.getPosition() for sonar_node in sonar_nodes]
+    sonar_nodes = [sensor_slot.getMFNode(i) for i in range(len(sonars))]
+    sonar_poses = [sonar_node.getPosition() for sonar_node in sonar_nodes]
 
-while robot.step(time_step) != -1:
-    to_print = "Sonar values: "
-    rs = []
+    while robot.step(time_step) != -1:
+        to_print = "Sonar values: "
+        rs = []
 
-    for sonar, i in zip(sonars, range(len(sonars))):
-        sampling_period = sonar.getSamplingPeriod()
-        value = sonar.getValue()
-        to_print += str(value) + " "
-        rs.append(value)
+        for sonar, i in zip(sonars, range(len(sonars))):
+            sampling_period = sonar.getSamplingPeriod()
+            value = sonar.getValue()
+            to_print += str(value) + " "
+            rs.append(value)
 
-    #print(to_print)
+        #print(to_print)
 
-    
+        n = len(rs)
+        measured_poses = []
+
+        for i in range(n):
+            for j in range(i + 1, n):
+                x, y = get_intersections(sonar_poses[i], sonar_poses[j], rs[i], rs[j])
+                measured_poses.append(np.array([x, y]))
+
+
+#main()
     
