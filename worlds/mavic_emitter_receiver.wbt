@@ -1,0 +1,173 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/manhole/protos/SquareManhole.proto"
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/apartment_structure/protos/Wall.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Roughcast.proto"
+
+EXTERNPROTO "C:\\Users/User/Documents/my_webots_projects/mavic/worlds/protos/RobotEmitter.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/dji/mavic/protos/Mavic2Pro.proto"
+
+WorldInfo {
+  info [
+    "This demonstration shows a DJI Mavic 2 PRO flying over a rural area."
+    "After the drone has taken off, you can control it with the keyboard of your computer."
+  ]
+  title "DJI Mavic 2 PRO demo"
+  basicTimeStep 8
+  defaultDamping Damping {
+    linear 0.5
+    angular 0.5
+  }
+}
+Viewpoint {
+  orientation -0.03132509357312057 -0.004229724205027985 0.9995002991224087 2.901671340011777
+  position 3.392036511082617 -0.9278446049316036 0.7513423909480075
+  near 0.2
+  follow "Mavic 2 PRO"
+  followSmoothness 0.2
+}
+TexturedBackground {
+  luminosity 3
+}
+
+TexturedBackgroundLight {
+}
+
+Floor {
+  translation 0 -4.22 7
+  rotation 1 0 0 3.141592
+  size 20 16.4
+  tileSize 1 1
+  appearance PBRAppearance {
+    baseColorMap ImageTexture {
+      url [
+        "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/default/worlds/textures/asphalt.jpg"
+      ]
+    }
+    roughness 1
+    metalness 0
+  }
+}
+
+SquareManhole {
+  translation 0 0 -0.03
+}
+
+Wall {
+  translation 0 3.82 0
+  name "wall(1)"
+  size 20 0.2 7
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 2.857 1
+    }
+  }
+}
+
+Wall {
+  translation 0 -12.5 0
+  name "wall(2)"
+  size 20 0.2 7
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 5 1.75
+    }
+  }
+}
+
+Wall {
+  translation -10 -4.3 0
+  rotation 0 0 1 1.5708
+  name "wall(3)"
+  size 16.5 0.2 7
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 4.125 1.725
+    }
+  }
+}
+
+Wall {
+  translation 10 -4.3 0
+  rotation 0 0 1 -1.5708
+  size 16.5 0.2 7
+  appearance Roughcast {
+    textureTransform TextureTransform {
+      scale 4.125 1.725
+    }
+  }
+}
+
+RobotEmitter {
+  translation 0 0 0.0
+  rotation 0 0 1 3.141590777218456
+  controller "mavic_emitter_python"
+  supervisor TRUE
+
+  sensorSlot [
+    Emitter {
+      name "emitter_1"
+      type "serial"
+      range 100
+      aperture 6.28
+      channel 1
+      byteSize 8
+      bufferSize 9
+    }
+    Emitter {
+      name "emitter_2"
+      type "serial"
+      range 100
+      aperture 6.28
+      channel 1
+      byteSize 8
+      bufferSize 9
+    }
+    Emitter {
+      name "emitter_3"
+      type "serial"
+      range 100
+      aperture 6.28
+      channel 1
+      byteSize 8
+      bufferSize 9
+    }
+    Emitter {
+      name "emitter_4"
+      type "serial"
+      range 100
+      aperture 6.28
+      channel 1
+      byteSize 8
+      bufferSize 9
+    }
+  ]
+}
+
+Mavic2Pro {
+  translation 0 0 0.1
+  rotation 0 0 1 3.141590777218456
+  controller "mavic_receiver_python"
+  supervisor TRUE
+
+  cameraSlot [
+    Camera {
+      width 400
+      height 240
+      near 0.2
+    }
+    Receiver {
+      name "receiver"
+      type "serial"
+      aperture 6.28
+      baudRate -1
+      byteSize 8
+      bufferSize 9
+      signalStrengthNoise 0
+    }
+  ]
+}

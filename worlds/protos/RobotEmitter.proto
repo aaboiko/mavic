@@ -1,0 +1,18 @@
+#VRML_SIM R2023b utf8
+
+PROTO RobotEmitter [
+    field SFVec3f    translation         0 0 0.0
+    field SFRotation rotation            0 0 1 0
+    field SFString   controller          "mavic_emitter_python"
+    field SFBool     supervisor          TRUE
+    field MFNode     sensorSlot          [  ]
+]
+{
+    Robot {
+        translation IS translation
+        rotation IS rotation
+        controller IS controller
+        children IS sensorSlot
+        supervisor IS supervisor
+    }
+}

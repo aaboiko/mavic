@@ -13,8 +13,6 @@ from controller import Keyboard
 from controller import LED
 from controller import Motor
 
-NUM_ARUCOS = 32
-
 
 def CLAMP(value, low, high):
     if value < low:
@@ -24,34 +22,6 @@ def CLAMP(value, low, high):
             return high
         else:
             return value
-
-
-def transform(point, tvec, rvec):
-    p = np.array(point)
-    trans = np.array(tvec)
-    roll, pitch, yaw = rvec
-
-    R1 = np.array([
-        [np.cos(roll), -np.sin(roll), 0],
-        [np.sin(roll), np.cos(roll), 0],
-        [0, 0, 1]
-    ])
-
-    R2 = np.array([
-        [1, 0, 0],
-        [0, np.cos(pitch), -np.sin(pitch)],
-        [0, np.sin(pitch), np.cos(pitch)]
-    ])
-
-    R3 = np.array([
-        [np.cos(yaw), -np.sin(yaw), 0],
-        [np.sin(yaw), np.cos(yaw), 0],
-        [0, 0, 1]
-    ])
-
-    R = R1 @ R2 @ R3
-
-    return trans - R @ p
 
 
 def main():
@@ -113,34 +83,6 @@ def main():
 
     target_altitude = 1.0
 
-    #getting ARUCO positions
-    arucos = []
-
-    root_node = robot.getRoot()
-    robot_node = robot.getSelf()
-    children = root_node.getField('children')
-
-    for i in range(NUM_ARUCOS + 8):
-        aruco = children.getMFNode(i)
-        name_field = aruco.getField('name')
-
-        if name_field is None:
-            name = 'None'
-        else:
-            name = name_field.getSFString()
-
-            if name.split('_')[0] == 'aruco':
-                translation = aruco.getField('translation').getSFVec3f()
-                rotation = aruco.getField('rotation').getSFRotation()
-                
-                pose = {
-                    "translation": translation,
-                    "rotation": rotation
-                }
-
-                arucos.append(pose)
-
-
     while robot.step(timestep) != -1:
         time = robot.getTime()
 
@@ -158,57 +100,6 @@ def main():
         roll_disturbance = 0.0
         pitch_disturbance = 0.0
         yaw_disturbance = 0.0
-
-        #Dealing with aruco
-        this_aruco_dictionary = cv2.aruco.Dictionary_get(cv2.aruco.DICT_ARUCO_ORIGINAL)
-        this_aruco_parameters = cv2.aruco.DetectorParameters_create()
-
-        image = camera.getImage()
-        img = np.frombuffer(image, np.uint8).reshape((camera.getHeight(), camera.getWidth(), 4))  # RGBA format
-        img = cv2.cvtColor(img, cv2.COLOR_RGBA2RGB)
-        (corners, ids, rejected) = cv2.aruco.detectMarkers(img, this_aruco_dictionary, parameters=this_aruco_parameters)
-        #print('ids: ' + str(ids))
-
-        marker_length = 0.5
-
-        width = camera.getWidth()
-        height = camera.getHeight()
-        fov = camera.getFov()  
-
-        fx = width / (2 * math.tan(fov / 2))
-        fy = height / (2 * math.tan(fov / 2))
-        cx = width / 2.0
-        cy = height / 2.0
-
-        camera_matrix = np.array([[fx, 0, cx],
-                           [0, fy, cy],
-                           [0, 0, 1]], dtype=float)
-        
-        distortion_coeffs = np.zeros((4, 1))
-
-        if ids is not None:
-            for i in range(len(ids)):
-                rvec, tvec, marker_pts = cv2.aruco.estimatePoseSingleMarkers(corners[i], marker_length, camera_matrix, distortion_coeffs)
-                #cv2.aruco.drawDetectedMarkers(img, corners, ids)
-                #cv2.drawFrameAxes(img, camera_matrix, distortion_coeffs, rvec[0], tvec[0], 0.1) 
-
-                id = ids[i][0]
-                aruco_translation_loc = tvec[0][0]
-                aruco_rotation_loc = rvec[0][0]
-                aruco_translation_world = arucos[id - 1]["translation"]
-                aruco_rotation_world = arucos[id - 1]["rotation"]
-
-                #print("ID: " + str(id) + ', rot: ' + str(aruco_rotation_loc) + ', trans: ' + str(aruco_translation_loc))
-
-                print('aruco_translation_world: ' + str(aruco_translation_world))
-                print('aruco_translation_loc: ' + str(aruco_translation_loc))
-                robot_pose_meas = np.array(aruco_translation_world) + np.array(aruco_translation_loc)
-                print('measured pose: ' + str(robot_pose_meas))
-
-            robot_position = robot_node.getPosition()
-            print('true pose: ' + str(robot_position))
-        
-        ###################################
 
         key = keyboard.getKey()
 
