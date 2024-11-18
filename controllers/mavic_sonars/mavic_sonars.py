@@ -11,7 +11,7 @@ xc_4 = np.array([-9.81, -3.5])
 xcs = [xc_1, xc_2, xc_3, xc_4]
 
 
-def in_box(x, y):
+def in_box(x, y, x_bounds, y_bounds):
     x_min, x_max = x_bounds
     y_min, y_max = y_bounds
 

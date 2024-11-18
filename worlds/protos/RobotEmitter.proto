@@ -1,6 +1,7 @@
 #VRML_SIM R2023b utf8
 
 PROTO RobotEmitter [
+    field SFString   name                "robot_emitter"
     field SFVec3f    translation         0 0 0.0
     field SFRotation rotation            0 0 1 0
     field SFString   controller          "mavic_emitter_python"
@@ -9,6 +10,7 @@ PROTO RobotEmitter [
 ]
 {
     Robot {
+        name IS name
         translation IS translation
         rotation IS rotation
         controller IS controller

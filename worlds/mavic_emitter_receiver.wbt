@@ -103,6 +103,7 @@ Wall {
 }
 
 RobotEmitter {
+  name "robot_emitter"
   translation 0 0 0.0
   rotation 0 0 1 3.141590777218456
   controller "mavic_emitter_python"
@@ -111,37 +112,45 @@ RobotEmitter {
   sensorSlot [
     Emitter {
       name "emitter_1"
+      translation 9.89 12.4 7.0
+      rotation 1 0 0 0
       type "serial"
       range 100
       aperture 6.28
       channel 1
       byteSize 8
-      bufferSize 9
+      bufferSize 17
     }
     Emitter {
       name "emitter_2"
+      translation 9.89 -3.5 7.0
+      rotation 1 0 0 0
       type "serial"
       range 100
       aperture 6.28
-      channel 1
+      channel 2
       byteSize 8
       bufferSize 9
     }
     Emitter {
       name "emitter_3"
+      translation -9.81 12.4 7.0
+      rotation 1 0 0 0
       type "serial"
       range 100
       aperture 6.28
-      channel 1
+      channel 3
       byteSize 8
       bufferSize 9
     }
     Emitter {
       name "emitter_4"
+      translation -9.81 -3.5 7.0
+      rotation 1 0 0 0
       type "serial"
       range 100
       aperture 6.28
-      channel 1
+      channel 4
       byteSize 8
       bufferSize 9
     }
@@ -161,13 +170,88 @@ Mavic2Pro {
       near 0.2
     }
     Receiver {
-      name "receiver"
+      name "receiver_1"
+      channel 1
+      type "serial"
+      aperture 6.28
+      baudRate -1
+      byteSize 8
+      bufferSize 17
+      signalStrengthNoise 0
+    }
+    Receiver {
+      name "receiver_2"
+      channel 2
       type "serial"
       aperture 6.28
       baudRate -1
       byteSize 8
       bufferSize 9
       signalStrengthNoise 0
+    }
+    Receiver {
+      name "receiver_3"
+      channel 3
+      type "serial"
+      aperture 6.28
+      baudRate -1
+      byteSize 8
+      bufferSize 9
+      signalStrengthNoise 0
+    }
+    Receiver {
+      name "receiver_4"
+      channel 4
+      type "serial"
+      aperture 6.28
+      baudRate -1
+      byteSize 8
+      bufferSize 9
+      signalStrengthNoise 0
+    }
+    Emitter {
+      name "emitter_1"
+      translation 9.89 12.4 7.0
+      rotation 1 0 0 0
+      type "serial"
+      range 100
+      aperture 6.28
+      channel 1
+      byteSize 8
+      bufferSize 17
+    }
+    Emitter {
+      name "emitter_2"
+      translation 9.89 -3.5 7.0
+      rotation 1 0 0 0
+      type "serial"
+      range 100
+      aperture 6.28
+      channel 2
+      byteSize 8
+      bufferSize 9
+    }
+    Emitter {
+      name "emitter_3"
+      translation -9.81 12.4 7.0
+      rotation 1 0 0 0
+      type "serial"
+      range 100
+      aperture 6.28
+      channel 3
+      byteSize 8
+      bufferSize 9
+    }
+    Emitter {
+      name "emitter_4"
+      translation -9.81 -3.5 7.0
+      rotation 1 0 0 0
+      type "serial"
+      range 100
+      aperture 6.28
+      channel 4
+      byteSize 8
+      bufferSize 9
     }
   ]
 }
